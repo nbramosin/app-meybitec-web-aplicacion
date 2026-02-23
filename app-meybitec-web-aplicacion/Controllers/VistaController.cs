@@ -1,26 +1,20 @@
-﻿using Capa.Entidad;
+﻿
+using System.IO;
+using System.Web;
+using System.Linq;
+using System.Web.Mvc;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Capa.Negocio.Common;
+using Capa.Entidad.Usuario;
 using Capa.Entidad.Persona;
 using Capa.Entidad.Producto;
-using Capa.Entidad.Usuario;
-using Capa.Negocio.Common;
-using Capa.Transversal.Common;
 using Capa.Transversal.Helpers;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 
 namespace app_meybitec_web_aplicacion.Controllers
 {
     public class VistaController : BaseController
     {
-        //public static readonly string token = Session["JWT_TOKEN"]?.ToString();
         // GET: Vista
         public ActionResult Index()
         {
@@ -29,7 +23,6 @@ namespace app_meybitec_web_aplicacion.Controllers
         public async Task<ActionResult> Producto()
         {
             ViewBag.MenuActivo = "mnuproducto";
-            //var token = Session["JWT_TOKEN"]?.ToString();
             var taskMarcas = Common.ObtenerMarcasProducto();
             var taskCategorias = Common.ObtenerCategoriasProducto();
             var taskConexiones = Common.ObtenerConexionesProducto();
@@ -204,11 +197,6 @@ namespace app_meybitec_web_aplicacion.Controllers
                 if(result == null || result.Header.CodigoRetorno != 0)
                 {
                     return Json(result);
-                    /*return Json(new
-                    {
-                        Ok = false,
-                        message = result?.Header?.DescRetorno ?? "Error al subir imágenes"
-                    });*/
                 }
 
                 model.imagenes = result.Body;
@@ -220,12 +208,6 @@ namespace app_meybitec_web_aplicacion.Controllers
                     await Common.EliminarImagenes(result.Body);
 
                     return Json(response);
-
-                    /*return Json(new
-                    {
-                        Ok = false,
-                        message = response?.Header?.DescRetorno ?? "No se pudo registrar el producto"
-                    });*/
                 }
 
                 var session = ValidarSesion(response);

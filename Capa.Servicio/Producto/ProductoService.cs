@@ -1,32 +1,28 @@
-﻿using Capa.Entidad;
+﻿using System.Net;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using Capa.Entidad.APIs;
-using Capa.Entidad.APIs.Header;
 using Capa.Entidad.Producto;
 using Capa.Transversal.Common;
+using Capa.Entidad.APIs.Header;
 using Capa.Transversal.Helpers;
 using Capa.Transversal.ServicioREST;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Capa.Servicio.Producto
 {
     public class ProductoService : BaseService
     {
-        public static async Task<ApiResponse<List<MarcasProducto>>> ObtenerMarcasProducto(string url)
+        public static async Task<ApiResponse<List<Marca>>> ObtenerMarcasProducto(string url)
         {
-            var objResponse = new ApiResponse<List<MarcasProducto>>();
+            var objResponse = new ApiResponse<List<Marca>>();
 
             try
             {
                 var tokenJwt = TokenProvider.GetToken();
                 if (string.IsNullOrEmpty(tokenJwt))
                 {
-                    return SessionExpirada<List<MarcasProducto>>();
+                    return SessionExpirada<List<Marca>>();
                 }
 
                 var jsonContent = await RestService.ConsumeServicioGet(url, tokenJwt);
@@ -37,7 +33,7 @@ namespace Capa.Servicio.Producto
                     return objResponse;
                 }
 
-                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<MarcasProducto>>>(jsonContent.Resultado);
+                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<Marca>>>(jsonContent.Resultado);
 
                 if (objResponse?.Header?.CodigoRetorno != 0)
                 {
@@ -54,16 +50,16 @@ namespace Capa.Servicio.Producto
 
             return objResponse;
         }
-        public static async Task<ApiResponse<List<CategoriasProducto>>> ObtenerCategoriasProducto(string url)
+        public static async Task<ApiResponse<List<Categoria>>> ObtenerCategoriasProducto(string url)
         {
-            var objResponse = new ApiResponse<List<CategoriasProducto>>();
+            var objResponse = new ApiResponse<List<Categoria>>();
 
             try
             {
                 var tokenJwt = TokenProvider.GetToken();
                 if (string.IsNullOrEmpty(tokenJwt))
                 {
-                    return SessionExpirada <List<CategoriasProducto>>();
+                    return SessionExpirada <List<Categoria>>();
                 }
 
                 var jsonContent = await RestService.ConsumeServicioGet(url, tokenJwt);
@@ -74,7 +70,7 @@ namespace Capa.Servicio.Producto
                     return objResponse;
                 }
 
-                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<CategoriasProducto>>>(jsonContent.Resultado);
+                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<Categoria>>>(jsonContent.Resultado);
 
                 if (objResponse?.Header?.CodigoRetorno != 0)
                 {
@@ -92,16 +88,16 @@ namespace Capa.Servicio.Producto
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<ConexionesProducto>>> ObtenerConexionesProducto(string url)
+        public static async Task<ApiResponse<List<Conexion>>> ObtenerConexionesProducto(string url)
         {
-            var objResponse = new ApiResponse<List<ConexionesProducto>>();
+            var objResponse = new ApiResponse<List<Conexion>>();
 
             try
             {
                 var tokenJwt = TokenProvider.GetToken();
                 if (string.IsNullOrEmpty(tokenJwt))
                 {
-                    return SessionExpirada<List<ConexionesProducto>>();
+                    return SessionExpirada<List<Conexion>>();
                 }
 
                 var jsonContent = await RestService.ConsumeServicioGet(url, tokenJwt);
@@ -112,7 +108,7 @@ namespace Capa.Servicio.Producto
                     return objResponse;
                 }
 
-                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<ConexionesProducto>>>(jsonContent.Resultado);
+                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<Conexion>>>(jsonContent.Resultado);
 
                 if (objResponse?.Header?.CodigoRetorno != 0)
                 {
@@ -130,16 +126,16 @@ namespace Capa.Servicio.Producto
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<TiposCategoriaProducto>>> ObtenerTiposCategoriaProducto(string url)
+        public static async Task<ApiResponse<List<TipoCategoria>>> ObtenerTiposCategoriaProducto(string url)
         {
-            var objResponse = new ApiResponse<List<TiposCategoriaProducto>>();
+            var objResponse = new ApiResponse<List<TipoCategoria>>();
 
             try
             {
                 var tokenJwt = TokenProvider.GetToken();
                 if (string.IsNullOrEmpty(tokenJwt))
                 {
-                    return SessionExpirada<List<TiposCategoriaProducto>>();
+                    return SessionExpirada<List<TipoCategoria>>();
                 }
 
                 var jsonContent = await RestService.ConsumeServicioGet(url, tokenJwt);
@@ -150,7 +146,7 @@ namespace Capa.Servicio.Producto
                     return objResponse;
                 }
 
-                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<TiposCategoriaProducto>>>(jsonContent.Resultado);
+                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<TipoCategoria>>>(jsonContent.Resultado);
 
                 if (objResponse?.Header?.CodigoRetorno != 0)
                 {
@@ -168,16 +164,16 @@ namespace Capa.Servicio.Producto
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<LongitudesProducto>>> ObtenerLongitudesProducto(string url)
+        public static async Task<ApiResponse<List<Longitud>>> ObtenerLongitudesProducto(string url)
         {
-            var objResponse = new ApiResponse<List<LongitudesProducto>>();
+            var objResponse = new ApiResponse<List<Longitud>>();
 
             try
             {
                 var tokenJwt = TokenProvider.GetToken();
                 if (string.IsNullOrEmpty(tokenJwt))
                 {
-                    return SessionExpirada<List<LongitudesProducto>>();
+                    return SessionExpirada<List<Longitud>>();
                 }
 
                 var jsonContent = await RestService.ConsumeServicioGet(url, tokenJwt);
@@ -188,7 +184,7 @@ namespace Capa.Servicio.Producto
                     return objResponse;
                 }
 
-                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<LongitudesProducto>>>(jsonContent.Resultado);
+                objResponse = JsonConvert.DeserializeObject<ApiResponse<List<Longitud>>>(jsonContent.Resultado);
 
                 if (objResponse?.Header?.CodigoRetorno != 0)
                 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capa.Entidad.Producto
 {
-    public class CategoriasProducto
+    public class Categoria
     {
         public int id { get; set; }
         public string nombre { get; set; } = string.Empty;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Capa.Entidad.Producto
 {
-    public class TiposCategoriaProducto
+    public class Marca
     {
         public int id { get; set; }
-        public string nombre { get; set; } = string.Empty;
+        public string nombre { get; set; }
     }
 }

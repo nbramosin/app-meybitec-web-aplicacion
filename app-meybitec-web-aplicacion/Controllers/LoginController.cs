@@ -16,10 +16,6 @@ namespace app_meybitec_web_aplicacion.Controllers
         {
             return View();
         }
-        /*public async Task<ActionResult> Acceso()
-        {
-
-        }*/
 
         [HttpPost]
         public async Task<ActionResult> Login(UsuarioRequest request)
@@ -34,7 +30,7 @@ namespace app_meybitec_web_aplicacion.Controllers
                     message = response.Header.DescRetorno
                 });
             }
-                //return View("Login");
+
             //Guardar Token generado
             Session["JWT_TOKEN"] = response.Body.token;
             Session["oUsuario"] = response.Body.usuario;

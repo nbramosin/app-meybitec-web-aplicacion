@@ -19,9 +19,9 @@ namespace Capa.Datos.Common
 {
     public class Common
     {
-        public static async Task<ApiResponse<List<MarcasProducto>>> ObtenerMarcasProducto()
+        public static async Task<ApiResponse<List<Marca>>> ObtenerMarcasProducto()
         {
-            var objResponse = new ApiResponse<List<MarcasProducto>>();
+            var objResponse = new ApiResponse<List<Marca>>();
 
             try
             {
@@ -36,9 +36,9 @@ namespace Capa.Datos.Common
 
             return objResponse;
         }
-        public static async Task<ApiResponse<List<CategoriasProducto>>> ObtenerCategoriasProducto()
+        public static async Task<ApiResponse<List<Categoria>>> ObtenerCategoriasProducto()
         {
-            var objResponse = new ApiResponse<List<CategoriasProducto>>();
+            var objResponse = new ApiResponse<List<Categoria>>();
 
             try
             {
@@ -54,9 +54,9 @@ namespace Capa.Datos.Common
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<ConexionesProducto>>> ObtenerConexionesProducto()
+        public static async Task<ApiResponse<List<Conexion>>> ObtenerConexionesProducto()
         {
-            var objResponse =  new ApiResponse<List<ConexionesProducto>>();
+            var objResponse =  new ApiResponse<List<Conexion>>();
 
             try
             {
@@ -72,9 +72,9 @@ namespace Capa.Datos.Common
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<TiposCategoriaProducto>>> ObtenerTiposCategoriaProducto()
+        public static async Task<ApiResponse<List<TipoCategoria>>> ObtenerTiposCategoriaProducto()
         {
-            var objResponse = new ApiResponse<List<TiposCategoriaProducto>>();
+            var objResponse = new ApiResponse<List<TipoCategoria>>();
 
             try
             {
@@ -90,9 +90,9 @@ namespace Capa.Datos.Common
             return objResponse;
         }
 
-        public static async Task<ApiResponse<List<LongitudesProducto>>> ObtenerLongitudesProducto()
+        public static async Task<ApiResponse<List<Longitud>>> ObtenerLongitudesProducto()
         {
-            var objResponse = new ApiResponse<List<LongitudesProducto>>();
+            var objResponse = new ApiResponse<List<Longitud>>();
 
             try
             {

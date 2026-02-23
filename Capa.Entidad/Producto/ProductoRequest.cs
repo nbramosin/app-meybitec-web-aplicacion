@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace Capa.Entidad
+namespace Capa.Entidad.Producto
 {
     public class ProductoRequest
     {
         //PRODUCTO
-        //public string sku { get; set; } = string.Empty;
         public string nombre { get; set; } = string.Empty;
         public string descripcion { get; set; } = string.Empty;
         public string marcaRef { get; set; } = string.Empty;

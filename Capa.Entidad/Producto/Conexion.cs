@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Capa.Entidad.Producto
 {
-    public class LongitudesProducto
+    public class Conexion
     {
         public int id { get; set; }
-        public string valor { get; set; } = string.Empty;
+        public string nombre { get; set; } = string.Empty;
     }
 }

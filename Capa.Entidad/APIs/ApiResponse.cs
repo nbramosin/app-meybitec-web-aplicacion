@@ -11,14 +11,5 @@ namespace Capa.Entidad.APIs
     {
         public DTOHeader Header { get; set; }
         public T Body { get; set; }
-
-        /*public ApiResponse()
-        {
-            Header = new DTOHeader
-            {
-                CodigoRetorno = 0,
-                DescRetorno = "OK"
-            };
-        }*/
     }
 }

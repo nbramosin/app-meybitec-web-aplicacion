@@ -1,17 +1,13 @@
-﻿using Capa.Entidad;
-using Capa.Entidad.APIs;
-using Capa.Entidad.APIs.Header;
-using Capa.Transversal.Common;
-using Newtonsoft.Json;
-using System;
-using System.Configuration;
+﻿using System;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
+using Newtonsoft.Json;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI.WebControls;
+using System.Net.Http.Headers;
+using Capa.Entidad.APIs;
+using Capa.Transversal.Common;
+using Capa.Entidad.APIs.Header;
 
 namespace Capa.Transversal.ServicioREST
 {
