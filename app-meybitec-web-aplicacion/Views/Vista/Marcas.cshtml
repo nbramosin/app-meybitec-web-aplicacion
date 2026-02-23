@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Marcas";
+}
+
+<fieldset class="container product-fieldset">
+    <legend style="color: #9b3a4e; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 5px" class="mb-3 product-legend">Mantenimiento de Marcas</legend>
+    <form style="padding: 0 10px" id="frmMantenimientoMarca" method="post" novalidate>
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtNombreMarca" class="form-label small">Nombre:</label>
+            </div>
+            <div class="col-md-7 mb-3">
+                <textarea id="txtNombreMarca" name="marca" class="form-control"></textarea>
+                <div class="error-text" id="error-nombreMarca"></div>
+            </div>
+        </div>
+        <section>
+            <div class="mt-3" style="border-top: 1px solid #dee2e6"></div>
+            <div style="display:flex" class="gap-lg-3 mt-4 justify-content-center">
+                <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
+                <button type="reset" id="btnLimpiar" class="btn btn-danger">Limpiar</button>
+            </div>
+        </section>
+    </form>
+</fieldset>

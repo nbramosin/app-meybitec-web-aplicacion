@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewBag.Title = "Productos";
+}
+
+<fieldset class="container product-fieldset">
+    <legend style="color: #9b3a4e; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 5px" class="mb-3 product-legend">Mantenimiento de Producto</legend>
+    <form style="padding: 0 10px" id="frmMantenimientoProducto" method="post" novalidate>
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtSku" class="form-label small">Sku:</label>
+            </div>
+            <div class="col-md-3 mb-3">
+                <input type="text" id="txtSku" name="sku" class="form-control" readonly placeholder="Se generará automáticamente" />
+                <div class="error-text" id="error-sku"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtNombreProd" class="form-label small">Nombre:</label>
+            </div>
+            <div class="col-md-11 mb-3">
+                <textarea id="txtNombreProd" name="nombre" class="form-control"></textarea>
+                <div class="error-text" id="error-nombreProd"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtDescripcionProd" class="form-label small">Descripcion:</label>
+            </div>
+            <div class="col-md-11 mb-3">
+                <textarea id="txtDescripcionProd" name="descripcion" class="form-control"></textarea>
+                <div class="error-text" id="error-descripcionProd"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtMarcaReferencia" class="form-label small">Marca Ref.:</label>
+            </div>
+            <div class="col-md-11 mb-3">
+                <input id="txtMarcaReferencia" name="marcaRef" class="form-control" />
+                <div class="error-text" id="error-marcaReferencia"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="cboMarca" class="form-label small">Marcas:</label>
+            </div>
+            <div class="col-md-3 mb-3">
+                <select id="cboMarca" name="idMarca" class="form-select">
+                    <option value="-1">---Seleccionar---</option>
+                    @if (ViewBag.Marcas != null)
+                    {
+                        foreach (var item in ViewBag.Marcas)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    }
+
+                </select>
+                <div class="error-text" id="error-marca"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <label for="txtStock" class="form-label small">Stock:</label>
+            </div>
+            <div class="col-md-3 mb-4">
+                <input id="txtStock" name="stock" type="text" inputmode="numeric" maxlength="3" autocomplete="off" class="form-control" />
+                <div class="error-text" id="error-stock"></div>
+            </div>
+        </div>
+        <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+        <!--<div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>-->
+        <!--Clasificación del Producto-->
+        <section>
+            <h5 style="color: #9b3a4e; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 5px" class="section-title mt-3 mb-1 fw-bold">Clasificación del Producto:</h5>
+            <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+            <div class="row">
+                <div class="col-md-1">
+                    <label for="cboCategoria" class="form-label small ">Categorias:</label>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select id="cboCategoria" name="idCategoria" class="form-select">
+                        <option value="-1">---Seleccionar---</option>
+                        @if (ViewBag.Categorias != null)
+                        {
+                            foreach (var item in ViewBag.Categorias)
+                            {
+                                <option value="@item.id">@item.nombre</option>
+                            }
+                        }
+                    </select>
+                    <div class="error-text" id="error-categoria"></div>
+                </div>
+            </div>
+
+
+            <div id="seccion-filtros" class="d-none">
+                <div class="row mb-3">
+                    <!--SELECT -- CONEXIONES-->
+                    <div class="col-md-1">
+                        <label for="cboConexiones" class="form-label small">Conexiónes:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="cboConexiones" name="idConexion" class="form-select">
+                            <option value="-1">---Seleccionar---</option>
+                            @if (ViewBag.Conexiones != null)
+                            {
+                                foreach (var item in ViewBag.Conexiones)
+                                {
+                                    <option value="@item.id">@item.nombre</option>
+
+                                }
+                            }
+                        </select>
+                        <div class="error-text" id="error-conexiones"></div>
+                    </div>
+
+                    <!--SELECT -- TIPO CABLES-->
+                    <div class="col-md-1">
+                        <label for="cboTiposCategoria" class="form-label small">Tipos Categoria:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="cboTiposCategoria" name="idTipoCategoria" class="form-select">
+                            <option value="-1">---Seleccionar---</option>
+                            @if (ViewBag.TiposCategoria != null)
+                            {
+                                foreach (var item in ViewBag.TiposCategoria)
+                                {
+                                    <option value="@item.id">@item.nombre</option>
+
+                                }
+                            }
+                        </select>
+                        <div class="error-text" id="error-tiposCategoria"></div>
+                    </div>
+
+                    <!--SELECT -- LONGITUD-->
+                    <div class="col-md-1">
+                        <label for="cboLongitud" class="form-label small">Longitudes:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select id="cboLongitud" name="idLongitud" class="form-select">
+                            <option value="-1">---Seleccionar---</option>
+                            @if (ViewBag.Longitudes != null)
+                            {
+                                foreach (var item in ViewBag.Longitudes)
+                                {
+                                    <option value="@item.id">@item.valor</option>
+                                }
+                            }
+                        </select>
+                        <div class="error-text" id="error-longitud"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+        </section>
+
+        <!--Informacion de Precios-->
+        <section>
+            <h5 style="color: #9b3a4e; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 5px " class="section-title mt-3 mb-1 fw-bold">Información de Precios:</h5>
+            <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+            <div class="row">
+                <div class="col-md-1">
+                    <label for="txtPrecioBase" class="form-label small">Precio Base:</label>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input id="txtPrecioBase" name="precioBase" class="form-control" />
+                    <div class="error-text" id="error-precioBase"></div>
+                </div>
+                <div class="col-md-1">
+                    <label for="txtPrecioOferta" class="form-label small">Precio Oferta:</label>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input id="txtPrecioOferta" name="precioOferta" class="form-control" />
+                    <!--<div class="error-text" id="error-precioOferta"></div>-->
+                </div>
+
+                <div class="col-md-1">
+                    <label for="txtDescuento" class="form-label small ms-lg-0">Descuento (%):</label>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input id="txtDescuento" name="descuento" class="form-control" />
+                    <!--<div class="error-text" id="error-descuento"></div>-->
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-1">
+                    <label for="txtFechaInicio" class="form-label small"> Fecha Inicio:</label>
+                </div>
+                <div class="col-md-3">
+                    <input id="txtFechaInicio" type="date" name="fechaInicio" class="form-control" />
+                    <div class="error-text" id="error-fechaInicio"></div>
+                </div>
+                <div class="col-md-1">
+                    <label for="txtFechaFin" class="form-label small"> Fecha Fin:</label>
+                </div>
+                <div class="col-md-3">
+                    <input id="txtFechaFin" type="date" name="fechaFin" class="form-control" />
+                    <div class="error-text" id="error-fechaFin"></div>
+                </div>
+            </div>
+            <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+        </section>
+
+
+        <!--Informacion de Imagenes-->
+        <section>
+            <h5 style="color: #9b3a4e; text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 5px " class="section-title mt-3 mb-1 fw-bold">Imágenes del Producto:</h5>
+            <div class="mt-0 mb-4" style="border-top: 1px solid #dee2e6"></div>
+            <div class="row">
+                <div class="col-md-1">
+                    <label for="txtImagenes" class="form-label small">Imágenes:</label>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <input id="txtImagenes"
+                           type="file"
+                           name="imagenes"
+                           multiple
+                           accept="image/*"
+                           class="form-control"
+                           onchange="previewImages(this)" />
+
+                    <small class="text-muted">
+                        Puedes seleccionar una o varias imágenes
+                    </small>
+                    <div class="error-text" id="error-imagenes"></div>
+                </div>
+                <div id="preview" class="row mt-2">
+                    <div class="col-md-12"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="mt-3" style="border-top: 1px solid #dee2e6"></div>
+            <div style="display:flex" class="gap-lg-3 mt-4 justify-content-center">
+                <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
+                <button type="reset" id="btnLimpiar" class="btn btn-danger">Limpiar</button>
+            </div>
+        </section>
+    </form>
+</fieldset>
+
+<script src="~/Scripts/sweetalert.js"></script>
+<script src="~/Scripts/generic.js"></script>
+<script src="~/Scripts/Utils/mFetchSeguro.js"></script>
+<script src="~/Scripts/Producto/mProducto.js"></script>
